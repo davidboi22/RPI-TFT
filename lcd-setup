@@ -1,0 +1,54 @@
+if ! sudo test -d "/etc/X11/xorg.conf.d"; then
+  sudo mkdir /etc/X11/xorg.conf.d
+fi
+if ! sudo test "/etc/lcd-setup-complete"; then
+sudo echo "****ALL DONE****" > /etc/lcd-setup-complete
+cd ./files
+echo "Copying Files - first time run"
+sudo cp ./waveshare35a-overlay.dtb /boot/overlays/waveshare35a.dtbo
+sudo cp ./waveshare35a-overlay.dtb /boot/overlays/
+sudo cp -rf ./99-fbturbo.conf  /usr/share/X11/xorg.conf.d/
+sudo sed -e 's/$/ fbcon=map:10 fbcon=font:ProFont6x11 logo.nologo/' -i /boot/cmdline.txt
+sudo mkdir /etc/lcd-setup-files/
+sudo cp -fv ./99-cal* ./config-35* /etc/lcd-setup-files/
+echo "** Done Copying **"
+echo "**************************************************"
+echo "** You can now move this script to your desktop **"
+echo "** or home directory if required                **"
+echo "**************************************************"
+sleep 5
+fi
+cd /etc/lcd-setup-files/
+echo "**************************************"
+echo "** Enter degrees to set display to: **"
+echo "** 0   = Landscape Normal           **"
+echo "** 90  = Potrait Normal             **" 
+echo "** 180 = Landscape Flipped          **"
+echo "** 270 = Protrait Flipped           **"
+echo "**************************************"
+read disp
+
+if test "$disp" = "0";then
+sudo cp -vrf ./99-calibration.conf-35  /etc/X11/xorg.conf.d/99-calibration.conf
+sudo cp -v ./config-35.txt /boot/config.txt
+echo "LCD configured - Landscape Normal"
+elif test "$disp" = "90";then
+sudo cp -rvf ./99-calibration.conf-35-90  /etc/X11/xorg.conf.d/99-calibration.conf
+sudo cp -v ./config-35.txt-90 /boot/config.txt
+echo "LCD configured - Portrait Normal"
+elif test "$disp" = "180";then
+sudo cp -vrf ./99-calibration.conf-35-180  /etc/X11/xorg.conf.d/99-calibration.conf
+sudo cp -v ./config-35.txt-180 /boot/config.txt
+echo "LCD configured - Landscape Flipped"
+elif test "$disp" = "270"; then
+sudo cp -vrf ./99-calibration.conf-35-270  /etc/X11/xorg.conf.d/99-calibration.conf
+sudo cp -v ./config-35.txt-270 /boot/config.txt
+echo "LCD configured - Portrait Flipped"
+else
+echo "Invalid Number [0] [90] [180] [270]"
+sleep 2
+exit 1
+fi
+sleep 1
+echo "REBOOTING..."
+sudo reboot
