@@ -1,7 +1,7 @@
 if ! sudo test -d "/etc/X11/xorg.conf.d"; then
   sudo mkdir /etc/X11/xorg.conf.d
 fi
-if ! sudo test "/etc/lcd-setup-complete"; then
+if ! sudo test -e "/etc/lcd-setup-complete"; then
 sudo echo "****ALL DONE****" > /etc/lcd-setup-complete
 cd ./files
 echo "Copying Files - first time run"
