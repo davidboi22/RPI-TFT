@@ -1,8 +1,7 @@
-if ! sudo test -d "/etc/X11/xorg.conf.d"; then
+if ! sudo test -d "/etc/X11/xorg.conf.d/"; then
   sudo mkdir /etc/X11/xorg.conf.d
 fi
-if ! sudo test -e "/etc/lcd-setup-complete"; then
-sudo echo "****ALL DONE****" > /etc/lcd-setup-complete
+if ! sudo test -d "/etc/lcd-setup-files/"; then
 cd ./files
 echo "Copying Files - first time run"
 sudo cp ./waveshare35a-overlay.dtb /boot/overlays/waveshare35a.dtbo
