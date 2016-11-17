@@ -9,7 +9,7 @@ sudo cp ./waveshare35a-overlay.dtb /boot/overlays/
 sudo cp -rf ./99-fbturbo.conf  /usr/share/X11/xorg.conf.d/
 sudo sed -e 's/$/ fbcon=map:10 fbcon=font:ProFont6x11 logo.nologo/' -i /boot/cmdline.txt
 sudo mkdir /etc/lcd-setup-files/
-sudo cp -fv ./99-cal* ./config-35* /etc/lcd-setup-files/
+sudo cp -f ./99-cal* ./config-35* /etc/lcd-setup-files/
 echo "** Done Copying **"
 echo "**************************************************"
 echo "** You can now move this script to your desktop **"
