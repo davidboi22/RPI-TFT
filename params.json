@@ -1,6 +1,6 @@
 {
   "name": "Setup of 3.5\" TouchScreen from ICStation.com on Raspberry Pi",
   "tagline": "",
-  "body": "# ICStation-Raspberry-Pi-Setup-Touch-Screen\r\nA simple script to setup The 3.5\" Touch Screen from ICStation.com on the Raspberry Pi.\r\n###Just run the lcd-setup file and everything is automatic.\r\n",
+  "body": "# ICStation-Raspberry-Pi-Setup-Touch-Screen\r\nA simple script to setup The 3.5\" Touch Screen from ICStation.com on the Raspberry Pi.\r\n###Just run the lcd-setup file and everything is automatic.\r\nTutorial at:\r\nhttps://www.youtube.com/watch?v=Cr6doxWoUyk",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
